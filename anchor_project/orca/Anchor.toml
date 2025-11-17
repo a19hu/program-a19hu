@@ -1,0 +1,24 @@
+[toolchain]
+anchor_version = "0.31.1"
+package_manager = "yarn"
+
+[features]
+resolution = true
+skip-lint = false
+idl-build = ["anchor-spl/idl-build"]
+
+[programs.localnet]
+orca = "9P6cZJHLnLu77ur6CdpNEgTZPnVVHweozgo4ykc9LMVZ"
+
+[programs.devnet]
+orca = "9P6cZJHLnLu77ur6CdpNEgTZPnVVHweozgo4ykc9LMVZ"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/orca.ts"

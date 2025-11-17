@@ -1,0 +1,917 @@
+{
+  "version": "0.1.0",
+  "name": "orca",
+  "instructions": [
+    {
+      "name": "initializeAmm",
+      "accounts": [
+        {
+          "name": "ammConfig",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "protocolFeeDestination",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "feeRate",
+          "type": "u16"
+        },
+        {
+          "name": "protocolFeeRate",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "createPool",
+      "accounts": [
+        {
+          "name": "ammConfig",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMint0",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMint1",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault0",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenVault1",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "observationState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "sqrtPriceX64",
+          "type": "u128"
+        },
+        {
+          "name": "tickSpacing",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "addLiquidity",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountToken0",
+          "type": "u64"
+        },
+        {
+          "name": "amountToken1",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "removeLiquidity",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountToken0",
+          "type": "u64"
+        },
+        {
+          "name": "amountToken1",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "swap",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammConfig",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccountIn",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccountOut",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVaultIn",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVaultOut",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "observationState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountIn",
+          "type": "u64"
+        },
+        {
+          "name": "minimumAmountOut",
+          "type": "u64"
+        },
+        {
+          "name": "zeroForOne",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "openPosition",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "position",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "increasePositionLiquidity",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "position",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenVault0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountToken0",
+          "type": "u64"
+        },
+        {
+          "name": "amountToken1",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "decreasePositionLiquidity",
+      "accounts": [
+        {
+          "name": "pool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "position",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenVault0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVault1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount0",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount1",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amountToken0",
+          "type": "u64"
+        },
+        {
+          "name": "amountToken1",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "AmmConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "defaultFeeRate",
+            "type": "u16"
+          },
+          {
+            "name": "protocolFeeRate",
+            "type": "u16"
+          },
+          {
+            "name": "protocolFeeDestination",
+            "type": "publicKey"
+          },
+          {
+            "name": "createPoolEnabled",
+            "type": "bool"
+          },
+          {
+            "name": "swapEnabled",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "ammConfig",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenMint0",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenMint1",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenVault0",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenVault1",
+            "type": "publicKey"
+          },
+          {
+            "name": "authBump",
+            "type": "u8"
+          },
+          {
+            "name": "liquidity",
+            "type": "u128"
+          },
+          {
+            "name": "sqrtPriceX64",
+            "type": "u128"
+          },
+          {
+            "name": "tickCurrent",
+            "type": "i32"
+          },
+          {
+            "name": "tickSpacing",
+            "type": "u16"
+          },
+          {
+            "name": "feeRate",
+            "type": "u16"
+          },
+          {
+            "name": "protocolFeesToken0",
+            "type": "u64"
+          },
+          {
+            "name": "protocolFeesToken1",
+            "type": "u64"
+          },
+          {
+            "name": "feeGrowthGlobal0X64",
+            "type": "u128"
+          },
+          {
+            "name": "feeGrowthGlobal1X64",
+            "type": "u128"
+          },
+          {
+            "name": "feeSplitLpBps",
+            "type": "u16"
+          },
+          {
+            "name": "feeSplitProtocolBps",
+            "type": "u16"
+          },
+          {
+            "name": "feeSplitImpactBps",
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Position",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "pool",
+            "type": "publicKey"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "liquidity",
+            "type": "u128"
+          },
+          {
+            "name": "feeGrowthEntry0X64",
+            "type": "u128"
+          },
+          {
+            "name": "feeGrowthEntry1X64",
+            "type": "u128"
+          },
+          {
+            "name": "tokensOwed0",
+            "type": "u64"
+          },
+          {
+            "name": "tokensOwed1",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ObservationState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "pool",
+            "type": "publicKey"
+          },
+          {
+            "name": "index",
+            "type": "u8"
+          },
+          {
+            "name": "cardinality",
+            "type": "u8"
+          },
+          {
+            "name": "tickCumulative",
+            "type": "i128"
+          },
+          {
+            "name": "lastTimestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidTickRange",
+      "msg": "Invalid tick range"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidTickSpacing",
+      "msg": "Invalid tick spacing"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidSqrtPrice",
+      "msg": "Invalid sqrt price"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientLiquidity",
+      "msg": "Insufficient liquidity"
+    },
+    {
+      "code": 6004,
+      "name": "SlippageToleranceExceeded",
+      "msg": "Slippage tolerance exceeded"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidFeeRate",
+      "msg": "Invalid fee rate"
+    },
+    {
+      "code": 6006,
+      "name": "PoolNotEnabled",
+      "msg": "Pool not enabled"
+    },
+    {
+      "code": 6007,
+      "name": "SwapNotEnabled",
+      "msg": "Swap not enabled"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidAuthority",
+      "msg": "Invalid authority"
+    },
+    {
+      "code": 6009,
+      "name": "PositionNotFound",
+      "msg": "Position not found"
+    },
+    {
+      "code": 6010,
+      "name": "TickNotInitialized",
+      "msg": "Tick not initialized"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidTickArray",
+      "msg": "Invalid tick array"
+    },
+    {
+      "code": 6012,
+      "name": "TickOutOfBounds",
+      "msg": "Tick out of bounds"
+    },
+    {
+      "code": 6013,
+      "name": "PriceOutOfBounds",
+      "msg": "Price out of bounds"
+    },
+    {
+      "code": 6014,
+      "name": "LiquidityOverflow",
+      "msg": "Liquidity overflow"
+    },
+    {
+      "code": 6015,
+      "name": "LiquidityUnderflow",
+      "msg": "Liquidity underflow"
+    },
+    {
+      "code": 6016,
+      "name": "MathOverflow",
+      "msg": "Math overflow"
+    },
+    {
+      "code": 6017,
+      "name": "MathUnderflow",
+      "msg": "Math underflow"
+    },
+    {
+      "code": 6018,
+      "name": "DivisionByZero",
+      "msg": "Division by zero"
+    },
+    {
+      "code": 6019,
+      "name": "InvalidTokenAccount",
+      "msg": "Invalid token account"
+    },
+    {
+      "code": 6020,
+      "name": "InvalidMint",
+      "msg": "Invalid mint"
+    },
+    {
+      "code": 6021,
+      "name": "InvalidPoolConfig",
+      "msg": "Invalid pool configuration"
+    },
+    {
+      "code": 6022,
+      "name": "PoolAlreadyExists",
+      "msg": "Pool already exists"
+    },
+    {
+      "code": 6023,
+      "name": "PositionAlreadyExists",
+      "msg": "Position already exists"
+    },
+    {
+      "code": 6024,
+      "name": "RewardNotInitialized",
+      "msg": "Reward not initialized"
+    },
+    {
+      "code": 6025,
+      "name": "RewardAlreadyInitialized",
+      "msg": "Reward already initialized"
+    },
+    {
+      "code": 6026,
+      "name": "InvalidRewardPeriod",
+      "msg": "Invalid reward period"
+    },
+    {
+      "code": 6027,
+      "name": "InsufficientRewards",
+      "msg": "Insufficient rewards"
+    },
+    {
+      "code": 6028,
+      "name": "InvalidObservation",
+      "msg": "Invalid observation"
+    },
+    {
+      "code": 6029,
+      "name": "OracleNotInitialized",
+      "msg": "Oracle not initialized"
+    },
+    {
+      "code": 6030,
+      "name": "InvalidTimeWindow",
+      "msg": "Invalid time window"
+    },
+    {
+      "code": 6031,
+      "name": "InsufficientObservationData",
+      "msg": "Insufficient observation data"
+    },
+    {
+      "code": 6032,
+      "name": "InvalidProtocolFeeRate",
+      "msg": "Invalid protocol fee rate"
+    },
+    {
+      "code": 6033,
+      "name": "ProtocolFeeCollectionFailed",
+      "msg": "Protocol fee collection failed"
+    },
+    {
+      "code": 6034,
+      "name": "InvalidTickArrayBitmap",
+      "msg": "Invalid tick array bitmap"
+    },
+    {
+      "code": 6035,
+      "name": "TickArrayAlreadyInitialized",
+      "msg": "Tick array already initialized"
+    },
+    {
+      "code": 6036,
+      "name": "InvalidPositionRange",
+      "msg": "Invalid position range"
+    },
+    {
+      "code": 6037,
+      "name": "PositionIsEmpty",
+      "msg": "Position is empty"
+    },
+    {
+      "code": 6038,
+      "name": "CannotDecreaseLiquidityBelowMinimum",
+      "msg": "Cannot decrease liquidity below minimum"
+    },
+    {
+      "code": 6039,
+      "name": "InvalidAmount",
+      "msg": "Invalid amount"
+    },
+    {
+      "code": 6040,
+      "name": "AmountOutBelowMinimum",
+      "msg": "Amount out below minimum"
+    },
+    {
+      "code": 6041,
+      "name": "AmountInAboveMaximum",
+      "msg": "Amount in above maximum"
+    },
+    {
+      "code": 6042,
+      "name": "InvalidSqrtPriceLimit",
+      "msg": "Invalid sqrt price limit"
+    },
+    {
+      "code": 6043,
+      "name": "SwapFailed",
+      "msg": "Swap failed"
+    },
+    {
+      "code": 6044,
+      "name": "InvalidFeeCollection",
+      "msg": "Invalid fee collection"
+    },
+    {
+      "code": 6045,
+      "name": "Unauthorized",
+      "msg": "Unauthorized"
+    },
+    {
+      "code": 6046,
+      "name": "AccountNotWritable",
+      "msg": "Account not writable"
+    },
+    {
+      "code": 6047,
+      "name": "AccountNotSigner",
+      "msg": "Account not signer"
+    },
+    {
+      "code": 6048,
+      "name": "InvalidProgramData",
+      "msg": "Invalid program data"
+    },
+    {
+      "code": 6049,
+      "name": "NumericalOverflow",
+      "msg": "Numerical overflow"
+    },
+    {
+      "code": 6050,
+      "name": "CreatePoolDisabled",
+      "msg": "Create pool disabled"
+    },
+    {
+      "code": 6051,
+      "name": "SwapDisabled",
+      "msg": "Swap disabled"
+    },
+    {
+      "code": 6052,
+      "name": "InvalidTokenOrder",
+      "msg": "Invalid token order"
+    },
+    {
+      "code": 6053,
+      "name": "TickNotAligned",
+      "msg": "Tick not aligned"
+    },
+    {
+      "code": 6054,
+      "name": "AmountOutTooLow",
+      "msg": "Amount out too low"
+    }
+  ]
+}
